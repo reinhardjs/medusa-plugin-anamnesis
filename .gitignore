@@ -1,4 +1,3 @@
-
 # Medusa JS specific
 .cache
 .DS_Store
@@ -68,7 +67,6 @@ typings/
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
-.cache
 .parcel-cache
 
 # Next.js build output
@@ -76,10 +74,8 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
-.cache/
 public
 
 # vuepress build output
@@ -106,3 +102,19 @@ public
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+yarn-error.log
+
+!src/**
+
+./tsconfig.tsbuildinfo
+package-lock.json
+yarn.lock
+medusa-db.sql
+
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
