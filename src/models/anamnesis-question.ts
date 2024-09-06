@@ -9,6 +9,9 @@ export class AnamnesisQuestion extends BaseEntity {
     @PrimaryColumn()
     id: string
 
+    @Column()
+    section_id: string;
+
     @ManyToOne(() => AnamnesisSection)
     @JoinColumn({ name: 'section_id' })
     section: AnamnesisSection;
@@ -33,6 +36,6 @@ export class AnamnesisQuestion extends BaseEntity {
 
     @BeforeInsert()
     private beforeInsert(): void {
-        this.id = generateEntityId(this.id, "anamnesis_section")
+        this.id = generateEntityId(this.id, "anamnesis_question")
     }
 }
