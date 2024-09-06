@@ -1,6 +1,18 @@
-# How to run
+# Software Developer Technical Test
 
-## Do these on root (plugin)
+Welcome to the repository for the Senior Developer technical test.
+
+<br>
+
+## Overview
+This project was created as part of the application process for the Senior Developer position at https://nosc.ai. 
+It demonstrates my skills in backend development, including system design, API development, and testing.
+
+https://github.com/noscai/senior-backend-engineer-job-application
+
+<br>
+
+## Do below steps on root folder (plugin)
 Do these when init install:
 1. `yarn install`
 2. `yarn prepare`
@@ -28,7 +40,7 @@ rm -rf node_modules/@medusajs
 
 <br>
 
-## Do these on backend
+## `cd ./backend` then do below steps inside backend folder
 1. `yarn link medusa-plugin-anamnesis`
 2. `npx medusa migrations run`
 3. `npx medusa seed --seed-file=data/seed.json`
