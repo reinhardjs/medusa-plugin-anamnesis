@@ -18,7 +18,10 @@ export const POST = async (
             description,
         })
 
-        res.status(201).json(newAnamnesisForm)
+        res.status(201).json({
+            "success": true,
+            data: newAnamnesisForm
+        })
     } catch (error) {
         res.status(400).json({
             message: "Error creating anamnesis form",
@@ -36,6 +39,7 @@ export const GET = async (
     const list = await anamnesisFormService.list()
 
     res.json({
-        forms: list,
+        "success": true,
+        data: list,
     })
 }
