@@ -37,7 +37,7 @@ rm -rf node_modules/@medusajs
 <br>
 
 ## Unit Test Coverage
-<img width="778" alt="image" src="https://github.com/user-attachments/assets/658c39a1-7c34-40f0-ad4e-209466104348">
+<img width="830" alt="image" src="https://github.com/user-attachments/assets/d3ce660a-bfc3-4428-bbcf-31141ae7d13f">
 
 <br>
 <br>
