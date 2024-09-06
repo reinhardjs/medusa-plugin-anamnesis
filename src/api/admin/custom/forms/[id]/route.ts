@@ -46,3 +46,26 @@ export const PUT = async (
         })
     }
 }
+
+export const DELETE = async (
+    req: MedusaRequest,
+    res: MedusaResponse
+) => {
+    const anamnesisFormService = req.scope.resolve("anamnesisFormService")
+
+    const { id } = req.params
+
+    try {
+        const deletedAnamnesisForm = await anamnesisFormService.delete(id)
+
+        res.json({
+            "success": true,
+            data: deletedAnamnesisForm,
+        })
+    } catch (error) {
+        res.status(400).json({
+            message: "Error deleting anamnesis form",
+            error: error.message,
+        })
+    }
+}

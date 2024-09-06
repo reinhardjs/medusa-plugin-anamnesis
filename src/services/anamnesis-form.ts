@@ -60,6 +60,20 @@ class AnamnesisFormService extends TransactionBaseService {
         Object.assign(form, data)
         return await this.anamnesisFormRepository_.save(form)
     }
+
+    /**
+     * Deletes an anamnesis form by its ID.
+     *
+     * @param id - The ID of the anamnesis form to delete.
+     * @returns The deleted anamnesis form.
+     */
+    async delete(id: string): Promise<AnamnesisForm> {
+        const form = await this.anamnesisFormRepository_.findOne({ where: { id } })
+        if (!form) {
+            throw new Error("Anamnesis form not found")
+        }
+        return await this.anamnesisFormRepository_.remove(form)
+    }
 }
 
 export default AnamnesisFormService
