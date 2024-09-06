@@ -17,6 +17,10 @@ How to generate migration:
 ```
 npx typeorm migration:generate -d datasource.js src/migrations/AnamnesisCreate
 ```
+<br>
+
+Don't forget to remove node_modules on plugin, to avoid dependency errors:
+``rm -rf node_modules/@medusajs``
 
 <br>
 
