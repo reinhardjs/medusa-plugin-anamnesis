@@ -2,13 +2,26 @@ import request from "supertest";
 
 describe("Admin Question API", () => {
     const apiUrl = "localhost:9000";
-    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MzU5NzcsImV4cCI6MTcyNTcyMjM3N30.xIlqm0Y619_YaEFm9LAsnvHA-zg_GIxiTj61lhN2NtI";
+    let authToken: string;
 
     let formId: string;
     let sectionId: string;
 
     beforeAll(async () => {
-        // First, create a form
+        // First, get access_token
+        const authData = {
+            "email": "admin@medusa-test.com",
+            "password": "supersecret"
+        };
+
+        const authResponse = await request(apiUrl)
+            .post("/admin/auth/token")
+            .send(authData)
+            .expect(200);
+
+        authToken = authResponse.body.access_token;
+
+        // Create a form
         const formData = {
             "title": "Form title",
             "description": "Form description"
@@ -172,7 +185,7 @@ describe("Admin Question API", () => {
     describe("DELETE /admin/custom/questions/:id", () => {
         it("should delete an existing question", async () => {
             // First, create a question
-            const initialData =  {
+            const initialData = {
                 "question_text": "question text",
                 "question_type": "select",
                 "options": [

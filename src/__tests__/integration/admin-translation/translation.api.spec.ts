@@ -3,7 +3,22 @@ import { EntityType } from "../../../common/enums/translation.enum";
 
 describe("Translation API", () => {
     const apiUrl = "localhost:9000";
-    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MzU5NzcsImV4cCI6MTcyNTcyMjM3N30.xIlqm0Y619_YaEFm9LAsnvHA-zg_GIxiTj61lhN2NtI";
+    let authToken: string;
+
+    beforeAll(async () => {
+        // First, get access_token
+        const authData = {
+            "email": "admin@medusa-test.com",
+            "password": "supersecret"
+        };
+
+        const authResponse = await request(apiUrl)
+            .post("/admin/auth/token")
+            .send(authData)
+            .expect(200);
+
+        authToken = authResponse.body.access_token;
+    });
 
     describe("POST /admin/custom/translations", () => {
         it("should create a new translation", async () => {
