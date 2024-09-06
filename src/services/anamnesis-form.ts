@@ -10,27 +10,26 @@ class AnamnesisFormService extends TransactionBaseService {
         this.anamnesisFormRepository_ = container.anamnesisFormRepository
     }
     
+    /**
+     * Creates a new anamnesis form with the provided title and description.
+     *
+     * @param data - An object containing the title and description of the anamnesis form to create.
+     * @returns The newly created anamnesis form.
+     */
     async create(
         data: Pick<AnamnesisForm, "title" | "description">
     ): Promise<AnamnesisForm> {
-        return this.atomicPhase_(async (manager) => {
-            const postRepo = manager.withRepository(
-                this.anamnesisFormRepository_
-            )
-            const post = postRepo.create()
-            post.title = data.title
-            post.description = data.description
-            const result = await postRepo.save(post)
-
-            return result
-        })
+        const forms = this.anamnesisFormRepository_.create(data)
+        return await this.anamnesisFormRepository_.save(forms)
     }
 
+    /**
+     * Retrieves all anamnesis forms.
+     *
+     * @returns An array of all anamnesis forms.
+     */
     async list(): Promise<AnamnesisForm[]> {
-        const anamnesisFormRepo = this.activeManager_.withRepository(
-            this.anamnesisFormRepository_
-        )
-        return await anamnesisFormRepo.find()
+        return await this.anamnesisFormRepository_.find()
     }
 }
 
