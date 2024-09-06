@@ -10,3 +10,13 @@ export class CreateAnamnesisFormDto {
     @IsOptional()
     description?: string;
 }
+
+export class UpdateAnamnesisFormDto {
+    @IsString()
+    @IsOptional()
+    title?: string;
+
+    @IsString()
+    @IsOptional()
+    description?: string;
+}

@@ -31,6 +31,35 @@ class AnamnesisFormService extends TransactionBaseService {
     async list(): Promise<AnamnesisForm[]> {
         return await this.anamnesisFormRepository_.find()
     }
+
+    /**
+     * Retrieves an anamnesis form by its ID.
+     *
+     * @param id - The ID of the anamnesis form to retrieve.
+     * @returns The anamnesis form with the specified ID.
+     */
+    async get(id: string): Promise<AnamnesisForm> {
+        return await this.anamnesisFormRepository_.findOne({ where: { id } })
+    }
+
+    /**
+     * Updates an existing anamnesis form with the provided data.
+     *
+     * @param id - The ID of the anamnesis form to update.
+     * @param data - An object containing the fields to update.
+     * @returns The updated anamnesis form.
+     */
+    async update(
+        id: string,
+        data: Partial<Pick<AnamnesisForm, "title" | "description">>
+    ): Promise<AnamnesisForm> {
+        const form = await this.anamnesisFormRepository_.findOne({ where: { id } })
+        if (!form) {
+            throw new Error("Anamnesis form not found")
+        }
+        Object.assign(form, data)
+        return await this.anamnesisFormRepository_.save(form)
+    }
 }
 
 export default AnamnesisFormService
