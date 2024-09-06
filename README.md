@@ -42,4 +42,4 @@ rm -rf node_modules/@medusajs
 <br>
 
 ## Available Endpoints (postman collection)
-[https://www.postman.com/medusajs/workspace/medusa/collection/19466668-209c3419-40b4-4068-8406-58606a158601?action=share&creator=19466668](https://www.postman.com/medusajs/workspace/medusa/collection/19466668-209c3419-40b4-4068-8406-58606a158601?action=share&creator=19466668)
+<a href="https://www.postman.com/reinhardjs/reinhardjs/collection/nycj76l/noscai-anamnesis?action=share&creator=24954084" target="_blank">https://www.postman.com/reinhardjs/reinhardjs/collection/nycj76l/noscai-anamnesis?action=share&creator=24954084</a>
