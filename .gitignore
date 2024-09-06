@@ -118,3 +118,5 @@ medusa-db.sql
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+src/coverage
