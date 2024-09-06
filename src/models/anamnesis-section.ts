@@ -30,6 +30,9 @@ export class AnamnesisSection extends BaseEntity {
     @Column({ type: "int" })
     order: number | null
 
+    @Column({ type: "varchar" })
+    form_id: string
+
     @CreateDateColumn()
     created_at: Date
 
