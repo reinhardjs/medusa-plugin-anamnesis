@@ -12,9 +12,9 @@ class AnamnesisSectionService extends TransactionBaseService {
     }
     
     /**
-     * Creates a new anamnesis section with the provided title and description.
+     * Creates a new anamnesis section with the provided dto data.
      *
-     * @param data - An object containing the title and description of the anamnesis section to create.
+     * @param data - An object containing the data of the anamnesis section to create.
      * @returns The newly created anamnesis section.
      */
     async create(

@@ -12,9 +12,9 @@ class AnamnesisQuestionService extends TransactionBaseService {
     }
     
     /**
-     * Creates a new anamnesis question with the provided title and description.
+     * Creates a new anamnesis question with the provided data.
      *
-     * @param data - An object containing the title and description of the anamnesis question to create.
+     * @param data - An object containing the data fields of the anamnesis question to create.
      * @returns The newly created anamnesis question.
      */
     async create(
