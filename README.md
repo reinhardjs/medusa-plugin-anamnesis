@@ -34,3 +34,6 @@ rm -rf node_modules/@medusajs
 3. `npx medusa seed --seed-file=data/seed.json`
 4. `npm run dev -- -- --preserve-symlinks`
 
+## Unit Test Coverage
+<img width="778" alt="image" src="https://github.com/user-attachments/assets/658c39a1-7c34-40f0-ad4e-209466104348">
+
