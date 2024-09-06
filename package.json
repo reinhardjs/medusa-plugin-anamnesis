@@ -59,6 +59,7 @@
     "eslint": "^6.8.0",
     "jest": "^27.3.1",
     "rimraf": "^3.0.2",
+    "supertest": "^7.0.0",
     "ts-jest": "^27.0.7",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.2"
@@ -66,7 +67,7 @@
   "peerDependencies": {
     "@medusajs/medusa": "^1.20.9",
     "react": "^18.2.0",
-    "react-router-dom": "^6.13.0"  
+    "react-router-dom": "^6.13.0"
   },
   "jest": {
     "globals": {
@@ -86,7 +87,7 @@
     "rootDir": "src",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
     "transform": {
-      ".ts": "ts-jest"
+      ".ts": "babel-jest"
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s"
