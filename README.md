@@ -39,3 +39,7 @@ rm -rf node_modules/@medusajs
 ## Unit Test Coverage
 <img width="778" alt="image" src="https://github.com/user-attachments/assets/658c39a1-7c34-40f0-ad4e-209466104348">
 
+<br>
+
+## Available Endpoints (postman collection)
+[https://www.postman.com/medusajs/workspace/medusa/collection/19466668-209c3419-40b4-4068-8406-58606a158601?action=share&creator=19466668](https://www.postman.com/medusajs/workspace/medusa/collection/19466668-209c3419-40b4-4068-8406-58606a158601?action=share&creator=19466668)
