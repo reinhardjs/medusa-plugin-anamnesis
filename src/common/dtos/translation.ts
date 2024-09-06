@@ -4,19 +4,19 @@ import { EntityType } from '../enums/translation.enum';
 export class CreateTranslationDto {
     @IsEnum(EntityType)
     @IsNotEmpty()
-    entity_type: EntityType;
+    entity_type?: EntityType;
 
     @IsString()
     @IsOptional()
-    entity_id: string | null;
+    entity_id?: string | null;
 
     @IsString()
     @IsOptional()
-    language_code: string | null;
+    language_code?: string | null;
 
     @IsString()
     @IsOptional()
-    translated_text: string | null;
+    translated_text?: string | null;
 }
 
 export class UpdateTranslationDto {
