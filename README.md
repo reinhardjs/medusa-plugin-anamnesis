@@ -1,11 +1,12 @@
-# Software Developer Technical Test
+# Software Engineer Technical Test
 
-Welcome to the repository for the Senior Developer technical test.
+Welcome to the repository for the Software Engineer Application's technical test.
 
 <br>
 
 ## Overview
-This project was created as part of the application process for the Senior Developer position at https://nosc.ai. 
+This project was created as part of the application process for the Software Engineer / Developer position at https://nosc.ai. 
+
 It demonstrates my skills in backend development, including system design, API development, and testing.
 
 https://github.com/noscai/senior-backend-engineer-job-application
