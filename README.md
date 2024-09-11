@@ -58,4 +58,4 @@ Please make sure to run steps above before running `yarn test --coverage`
 <br>
 
 ## Available Endpoints (postman collection)
-<a href="https://www.postman.com/reinhardjs/reinhardjs/collection/nycj76l/noscai-anamnesis?action=share&creator=24954084" target="_blank">https://www.postman.com/reinhardjs/reinhardjs/collection/nycj76l/noscai-anamnesis?action=share&creator=24954084</a>
+https://www.postman.com/reinhardjs/public/collection/nycj76l/noscai-anamnesis
