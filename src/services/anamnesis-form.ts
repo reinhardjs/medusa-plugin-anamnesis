@@ -42,6 +42,12 @@ class AnamnesisFormService extends TransactionBaseService {
         return await this.anamnesisFormRepository_.findOne({ where: { id } })
     }
 
+    /**
+     * Retrieves an anamnesis form template by its form ID.
+     *
+     * @param formId - The ID of the anamnesis form to retrieve.
+     * @returns The anamnesis form template with the specified ID.
+     */
     async getAdminFormTemplateById(formId: string): Promise<AnamnesisForm> {
         return await this.anamnesisFormRepository_.getAdminFormTemplateById(formId)
     }
