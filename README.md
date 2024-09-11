@@ -52,7 +52,7 @@ rm -rf node_modules/@medusajs
 ## Unit Test Coverage
 Please make sure to run steps above before running `yarn test --coverage`
 
-<img width="901" alt="image" src="https://github.com/user-attachments/assets/8b430f63-6276-49a6-91d6-6899b3e88d56">
+<img width="1467" alt="image" src="https://github.com/user-attachments/assets/a8fe0257-916e-411b-9df9-8056b5353004">
 
 <br>
 <br>
