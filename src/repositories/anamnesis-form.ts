@@ -6,9 +6,12 @@ import {
 export const AnamnesisFormRepository = dataSource
     .getRepository(AnamnesisForm)
     .extend({
-        customMethod(): void {
-            // TODO add custom implementation
-            return
+        async getAdminFormTemplateById(formId: string): Promise<AnamnesisForm | null> {
+            return this.createQueryBuilder("form")
+                .leftJoinAndSelect("form.sections", "section")
+                .leftJoinAndSelect("section.questions", "question")
+                .where("form.id = :formId", { formId })
+                .getOne()
         },
     })
 
