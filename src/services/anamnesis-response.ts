@@ -52,6 +52,10 @@ class AnamnesisResponseService extends TransactionBaseService {
         return await this.anamnesisResponseRepository_.findOne({ where: { id } })
     }
 
+    async getStoreResponseTemplateById(responseId: string): Promise<AnamnesisResponse> {
+        return await this.anamnesisResponseRepository_.getStoreResponseTemplateById(responseId)
+    }
+
     /**
      * Updates an existing anamnesis response with the provided data.
      *
