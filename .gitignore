@@ -119,4 +119,4 @@ medusa-db.sql
 !.yarn/sdks
 !.yarn/versions
 
-src/coverage
+# src/coverage
