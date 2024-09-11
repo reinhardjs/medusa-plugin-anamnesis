@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { AnamnesisFormController } from "../controllers/anamnesis-form.controller";
+import { AnamnesisFormController } from "../controllers/admin/anamnesis-form.controller";
 
 export default (rootDirectory, options) => {
   const router = Router()
