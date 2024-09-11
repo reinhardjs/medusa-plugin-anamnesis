@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1726064908713" clover="3.2.0">
-  <project timestamp="1726064908713" name="All files">
-    <metrics statements="98" coveredstatements="98" conditionals="20" coveredconditionals="20" methods="31" coveredmethods="31" elements="149" coveredelements="149" complexity="0" loc="98" ncloc="98" packages="1" files="5" classes="5"/>
+<coverage generated="1726067550747" clover="3.2.0">
+  <project timestamp="1726067550747" name="All files">
+    <metrics statements="99" coveredstatements="99" conditionals="20" coveredconditionals="20" methods="32" coveredmethods="32" elements="151" coveredelements="151" complexity="0" loc="99" ncloc="99" packages="1" files="5" classes="5"/>
     <file name="anamnesis-form.ts" path="/Users/reinhardjs/Documents/nocsai/nocsai-job-application/src/services/anamnesis-form.ts">
       <metrics statements="16" coveredstatements="16" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="7"/>
       <line num="9" count="11" type="stmt"/>
@@ -46,9 +46,9 @@
       <line num="100" count="1" type="stmt"/>
     </file>
     <file name="anamnesis-response.ts" path="/Users/reinhardjs/Documents/nocsai/nocsai-job-application/src/services/anamnesis-response.ts">
-      <metrics statements="21" coveredstatements="21" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
-      <line num="10" count="8" type="stmt"/>
-      <line num="11" count="8" type="stmt"/>
+      <metrics statements="22" coveredstatements="22" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="7"/>
+      <line num="10" count="11" type="stmt"/>
+      <line num="11" count="11" type="stmt"/>
       <line num="23" count="1" type="stmt"/>
       <line num="29" count="1" type="stmt"/>
       <line num="30" count="1" type="stmt"/>
@@ -56,18 +56,19 @@
       <line num="33" count="1" type="stmt"/>
       <line num="42" count="1" type="stmt"/>
       <line num="52" count="2" type="stmt"/>
-      <line num="66" count="2" type="stmt"/>
-      <line num="67" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="68" count="1" type="stmt"/>
-      <line num="70" count="1" type="stmt"/>
-      <line num="76" count="1" type="stmt"/>
-      <line num="77" count="1" type="stmt"/>
-      <line num="78" count="1" type="stmt"/>
+      <line num="56" count="3" type="stmt"/>
+      <line num="70" count="2" type="stmt"/>
+      <line num="71" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="72" count="1" type="stmt"/>
+      <line num="74" count="1" type="stmt"/>
       <line num="80" count="1" type="stmt"/>
-      <line num="90" count="2" type="stmt"/>
-      <line num="91" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="92" count="1" type="stmt"/>
-      <line num="94" count="1" type="stmt"/>
+      <line num="81" count="1" type="stmt"/>
+      <line num="82" count="1" type="stmt"/>
+      <line num="84" count="1" type="stmt"/>
+      <line num="94" count="2" type="stmt"/>
+      <line num="95" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="96" count="1" type="stmt"/>
+      <line num="98" count="1" type="stmt"/>
     </file>
     <file name="anamnesis-section.ts" path="/Users/reinhardjs/Documents/nocsai/nocsai-job-application/src/services/anamnesis-section.ts">
       <metrics statements="21" coveredstatements="21" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
