@@ -1,0 +1,4696 @@
+{
+	"info": {
+		"_postman_id": "29d0b14f-7308-42c6-939b-49a3806f83e6",
+		"name": "noscai-anamnesis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24954084",
+		"_collection_link": "https://www.postman.com/reinhardjs/workspace/public/collection/24954084-29d0b14f-7308-42c6-939b-49a3806f83e6?action=share&source=collection_link&creator=24954084"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "get token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response body",
+									"var responseJson = pm.response.json();",
+									"",
+									"// Extract the access_token from the response JSON",
+									"var accessToken = responseJson.access_token;",
+									"",
+									"// Check if accessToken exists and set it as an environment variable",
+									"if (accessToken) {",
+									"    pm.environment.set(\"access_token\", accessToken);",
+									"} else {",
+									"    console.log(\"access_token not found in the response\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3Ap_RDClvLbkvhvbE2J0rmzIa5hj8iTfdb.VQCw4GrjmxHPn8frOmHTqz%2Bka0ynQC0%2F0GVPdUPW1fA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"admin@medusa-test.com\",\n  \"password\": \"supersecret\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/admin/auth/token",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"auth",
+								"token"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'localhost:9000/admin/auth/token' \\\n--header 'Content-Type: application/json' \\\n--header 'Cookie: connect.sid=s%3Ap_RDClvLbkvhvbE2J0rmzIa5hj8iTfdb.VQCw4GrjmxHPn8frOmHTqz%2Bka0ynQC0%2F0GVPdUPW1fA' \\\n--data-raw '{\n  \"email\": \"admin@medusa-test.com\",\n  \"password\": \"supersecret\"\n}'"
+					},
+					"response": [
+						{
+							"name": "get token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3Ap_RDClvLbkvhvbE2J0rmzIa5hj8iTfdb.VQCw4GrjmxHPn8frOmHTqz%2Bka0ynQC0%2F0GVPdUPW1fA"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"admin@medusa-test.com\",\n  \"password\": \"supersecret\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9000/admin/auth/token",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"auth",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "227"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e3-9ccAMNya8kT3yGnYG0fzSZ/hBJQ\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AZW-gqr4jgi2fJYxCm86ImDXZJxzOzPYB.mCqCMYqtfBkZQDaAAqRScL3QNIw9%2BjHeXExKdNP%2BUCc; Path=/; Expires=Sat, 07 Sep 2024 01:19:37 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:19:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MzU5NzcsImV4cCI6MTcyNTcyMjM3N30.xIlqm0Y619_YaEFm9LAsnvHA-zg_GIxiTj61lhN2NtI\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "admin - forms",
+			"item": [
+				{
+					"name": "get list of forms",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/forms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"forms"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors'"
+					},
+					"response": [
+						{
+							"name": "get list of forms",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/forms",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"forms"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1994"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7ca-Wi/s1Wv52JAoBUcGYxG3T7V+/9g\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3ADO9sCp2xNyAHHdUZnTZIOFqYsnp7cPkY.923Qzb5m03sTdqwF3B2tAOP1%2F4E9Hn1HEEhXw6lF9Lk; Path=/; Expires=Sat, 07 Sep 2024 01:20:28 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:20:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"title\": \"title 1\",\n            \"description\": \"description 1\",\n            \"created_at\": \"2024-09-06T07:25:03.832Z\",\n            \"updated_at\": \"2024-09-06T07:25:03.832Z\"\n        },\n        {\n            \"id\": \"anamnesis_form_01J733J016WVPBBFPEE2HJMRYX\",\n            \"title\": \"title 2\",\n            \"description\": \"description 2\",\n            \"created_at\": \"2024-09-06T07:25:10.047Z\",\n            \"updated_at\": \"2024-09-06T07:25:10.047Z\"\n        },\n        {\n            \"id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n            \"title\": \"title 3\",\n            \"description\": \"description 3\",\n            \"created_at\": \"2024-09-06T07:26:00.369Z\",\n            \"updated_at\": \"2024-09-06T07:26:00.369Z\"\n        },\n        {\n            \"id\": \"anamnesis_form_01J7346KXGEEBVPK4RWN407ZE3\",\n            \"title\": \"title 4\",\n            \"description\": \"description 4\",\n            \"created_at\": \"2024-09-06T07:36:25.775Z\",\n            \"updated_at\": \"2024-09-06T07:36:25.775Z\"\n        },\n        {\n            \"id\": \"anamnesis_form_01J735F8DVE3KF68YZX16PX51J\",\n            \"title\": \"title 6\",\n            \"description\": \"description 6\",\n            \"created_at\": \"2024-09-06T07:58:37.496Z\",\n            \"updated_at\": \"2024-09-06T07:58:37.496Z\"\n        },\n        {\n            \"id\": \"anamnesis_form_01J735FRZG6CSRQXPPBY5PECHB\",\n            \"title\": \"title 7\",\n            \"description\": \"description 7\",\n            \"created_at\": \"2024-09-06T07:58:54.449Z\",\n            \"updated_at\": \"2024-09-06T07:58:54.449Z\"\n        },\n        {\n            \"id\": \"anamnesis_form_01J735H2YPRM74HGQPBQJZ9C8P\",\n            \"title\": \"title 7\",\n            \"description\": \"description 7\",\n            \"created_at\": \"2024-09-06T07:59:37.429Z\",\n            \"updated_at\": \"2024-09-06T07:59:37.429Z\"\n        },\n        {\n            \"id\": \"anamnesis_form_01J7378VS6TFZ2V7DM9DGA1TSH\",\n            \"title\": \"title 7\",\n            \"description\": \"description 7\",\n            \"created_at\": \"2024-09-06T08:30:05.093Z\",\n            \"updated_at\": \"2024-09-06T08:30:05.093Z\"\n        },\n        {\n            \"id\": \"anamnesis_form_01J737959A2KP2TJSMDR4D8CGV\",\n            \"title\": \"title 7\",\n            \"description\": \"description 7\",\n            \"created_at\": \"2024-09-06T08:30:14.826Z\",\n            \"updated_at\": \"2024-09-06T08:30:14.826Z\"\n        },\n        {\n            \"id\": \"anamnesis_form_01J73945Q6PH2VXYRV0K8VBB1X\",\n            \"title\": \"title 7\",\n            \"description\": \"description 7\",\n            \"created_at\": \"2024-09-06T09:02:28.581Z\",\n            \"updated_at\": \"2024-09-06T09:02:28.581Z\"\n        },\n        {\n            \"id\": \"anamnesis_form_01J7394Z4V5PNAZEPZQ7VA8AP8\",\n            \"title\": \"title 7\",\n            \"description\": \"description 7\",\n            \"created_at\": \"2024-09-06T09:02:54.619Z\",\n            \"updated_at\": \"2024-09-06T09:02:54.619Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create form",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Form title\",\n    \"description\": \"Form description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/forms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"forms"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q' \\\n--data '{\n    \"title\": \"title 7\",\n    \"description\": \"description 7\"\n}'"
+					},
+					"response": [
+						{
+							"name": "create form",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Form title\",\n    \"description\": \"Form description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/forms",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"forms"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "208"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d0-zXsAI0e9BOIjz5+q7f17IrVgpYI\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AgJsaizi0j2e1YJKCt4hj3G_jONOQAJ4h.JW%2F83451qXV%2FiG%2BKm5R4wf130LrnhlcpmCn%2FPumfXB0; Path=/; Expires=Sat, 07 Sep 2024 01:21:29 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:21:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_form_01J73YT5P3WB7YBC5X0KAH7NFV\",\n        \"title\": \"Form title\",\n        \"description\": \"Form description\",\n        \"created_at\": \"2024-09-06T15:21:29.520Z\",\n        \"updated_at\": \"2024-09-06T15:21:29.520Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get form by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/forms/anamnesis_form_01J7GNEGNSDGWD7BS1A6YP06J2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"forms",
+								"anamnesis_form_01J7GNEGNSDGWD7BS1A6YP06J2"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "get non exist form",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/forms/anamnesis_form_01J73YT5P3WB7YBC5X0KAH7NFV",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"forms",
+										"anamnesis_form_01J73YT5P3WB7YBC5X0KAH7NFV"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c-ng1iKOQSNw2obB7yJyIC6RDUM6g\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AnLph4fDCb-yrgsU7yLL-h8XoPE9FUER0.5XZ3VDTliS8WF4LaDr7jOaxViSl%2BI3Bm2Pur5eUyI8I; Path=/; Expires=Sat, 07 Sep 2024 01:25:05 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:25:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": null\n}"
+						},
+						{
+							"name": "get form by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/forms/anamnesis_form_01J73YT5P3WB7YBC5X0KAH7NFV",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"forms",
+										"anamnesis_form_01J73YT5P3WB7YBC5X0KAH7NFV"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "224"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e0-/6ytWnGWFIEAQrE1WjWzb+m1nuc\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AsQY1AOv4X3Sc10BvpL5298GIaod9Hg_l.gJYEx%2FfNp8YxoFjr7qzxuD5QwLjEB%2FmVWVJhc6B3Ns4; Path=/; Expires=Sat, 07 Sep 2024 01:25:24 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:25:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_form_01J73YT5P3WB7YBC5X0KAH7NFV\",\n        \"title\": \"Updated form title\",\n        \"description\": \"Updated form description\",\n        \"created_at\": \"2024-09-06T15:21:29.520Z\",\n        \"updated_at\": \"2024-09-06T15:22:41.947Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update form by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated form title\",\n    \"description\": \"Updated form description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/forms/anamnesis_form_01J73YT5P3WB7YBC5X0KAH7NFV",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"forms",
+								"anamnesis_form_01J73YT5P3WB7YBC5X0KAH7NFV"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "update form",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Updated form title\",\n    \"description\": \"Updated form description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/forms/anamnesis_form_01J73YT5P3WB7YBC5X0KAH7NFV",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"forms",
+										"anamnesis_form_01J73YT5P3WB7YBC5X0KAH7NFV"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "224"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e0-/6ytWnGWFIEAQrE1WjWzb+m1nuc\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AGpHiKy35uIl9CYCqv2RVblcIMReKdgMH.97cp63bLUS%2Fn0YibQ0xur596f6%2FE49v0%2FdyHVUWHyRI; Path=/; Expires=Sat, 07 Sep 2024 01:22:41 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:22:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_form_01J73YT5P3WB7YBC5X0KAH7NFV\",\n        \"title\": \"Updated form title\",\n        \"description\": \"Updated form description\",\n        \"created_at\": \"2024-09-06T15:21:29.520Z\",\n        \"updated_at\": \"2024-09-06T15:22:41.947Z\"\n    }\n}"
+						},
+						{
+							"name": "update non exist form",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Updated form title\",\n    \"description\": \"Updated form description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/forms/anamnesis_form_03J73YT5P3WB7YBC5X0KAH7NFV",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"forms",
+										"anamnesis_form_03J73YT5P3WB7YBC5X0KAH7NFV"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-QIWv1SFQM8v7PAoRkvcSKm1EqrM\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3ApYA4OMBr_o_FhQXdjOvi2xoimhNi4DNR.4m9TKw2yl5368tBZ4p2b8PNM23bZNOIyF3rFIeS0y%2F0; Path=/; Expires=Sat, 07 Sep 2024 01:27:54 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:27:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Error updating anamnesis form\",\n    \"error\": \"Anamnesis form not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete form by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/forms/anamnesis_form_01J737959A2KP2TJSMDR4D8CGV",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"forms",
+								"anamnesis_form_01J737959A2KP2TJSMDR4D8CGV"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "delete form",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/forms/anamnesis_form_01J737959A2KP2TJSMDR4D8CGV",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"forms",
+										"anamnesis_form_01J737959A2KP2TJSMDR4D8CGV"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "153"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"99-nGiBR+jCuyelK1/JMxy/FZwbtKU\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3ASmKkuEP-lE-V7cdW4Szs4WL-3-dQsn9M.tFw8vcT18RQKK6Qz0XJzanKJLopjqbyEHpy3fmRF0qo; Path=/; Expires=Sat, 07 Sep 2024 01:23:52 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:23:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"title\": \"title 7\",\n        \"description\": \"description 7\",\n        \"created_at\": \"2024-09-06T08:30:14.826Z\",\n        \"updated_at\": \"2024-09-06T08:30:14.826Z\"\n    }\n}"
+						},
+						{
+							"name": "delete non exist form",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/forms/anamnesis_form_01J737959A2KP2TJSMDR4D8CGV",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"forms",
+										"anamnesis_form_01J737959A2KP2TJSMDR4D8CGV"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-ykOXfNhnXj/9pA39dT645wv/Wos\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3A8gZBDktf1b9SlrZswQbz2xu8rSf6yblJ.k%2FYBnFbMQ6Gru12%2FzN%2F7KmTG37%2BBPpHSjsWToy0AMlA; Path=/; Expires=Sat, 07 Sep 2024 01:24:03 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:24:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Error deleting anamnesis form\",\n    \"error\": \"Anamnesis form not found\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "admin - sections",
+			"item": [
+				{
+					"name": "get list of sections",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/sections",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"sections"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors'"
+					},
+					"response": [
+						{
+							"name": "get list of sections",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/sections",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"sections"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2879"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b3f-bWcXiGH6gnODuLvlY4PqT0FYR4w\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3A1dYqfRpWeSpxOX5xJe6jAzBkU5uiVqPF.PTC3OB6q6mt%2BecCRJQ%2BT1JITpMzRAfjyotELlCgbHYc; Path=/; Expires=Sat, 07 Sep 2024 01:30:38 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:30:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"anamnesis_section_01J73CSS4RNW2G07YEJXT36X5T\",\n            \"title\": \"section title\",\n            \"description\": \"section description\",\n            \"order\": 2,\n            \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"created_at\": \"2024-09-06T10:06:42.327Z\",\n            \"updated_at\": \"2024-09-06T10:06:42.327Z\"\n        },\n        {\n            \"id\": \"anamnesis_section_01J73CSSN80NH8NVBKYRSAT4VY\",\n            \"title\": \"section title\",\n            \"description\": \"section description\",\n            \"order\": 3,\n            \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"created_at\": \"2024-09-06T10:06:42.856Z\",\n            \"updated_at\": \"2024-09-06T10:06:42.856Z\"\n        },\n        {\n            \"id\": \"anamnesis_section_01J73CS88J8EM5197NKHJD8A7E\",\n            \"title\": \"section title\",\n            \"description\": \"section description\",\n            \"order\": 4,\n            \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"created_at\": \"2024-09-06T10:06:25.040Z\",\n            \"updated_at\": \"2024-09-06T10:06:25.040Z\"\n        },\n        {\n            \"id\": \"anamnesis_section_01J73D70QWZ4BKQG37ASEEHXQE\",\n            \"title\": \"section title\",\n            \"description\": \"section description\",\n            \"order\": 1,\n            \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"created_at\": \"2024-09-06T10:13:56.091Z\",\n            \"updated_at\": \"2024-09-06T10:13:56.091Z\"\n        },\n        {\n            \"id\": \"anamnesis_section_01J73D99ZFKP7ZW8BWMKQ88PHN\",\n            \"title\": \"section title\",\n            \"description\": \"section description\",\n            \"order\": 1,\n            \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"created_at\": \"2024-09-06T10:15:11.086Z\",\n            \"updated_at\": \"2024-09-06T10:15:11.086Z\"\n        },\n        {\n            \"id\": \"anamnesis_section_01J73D9APZFHZZJ5T865M3KG92\",\n            \"title\": \"section title\",\n            \"description\": \"section description\",\n            \"order\": 1,\n            \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"created_at\": \"2024-09-06T10:15:11.839Z\",\n            \"updated_at\": \"2024-09-06T10:15:11.839Z\"\n        },\n        {\n            \"id\": \"anamnesis_section_01J73D9B62JP7JQ8FJSSKMPHTT\",\n            \"title\": \"section title\",\n            \"description\": \"section description\",\n            \"order\": 1,\n            \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"created_at\": \"2024-09-06T10:15:12.316Z\",\n            \"updated_at\": \"2024-09-06T10:15:12.316Z\"\n        },\n        {\n            \"id\": \"anamnesis_section_01J73D9BNEZKN6CYEGW2FBG2NX\",\n            \"title\": \"section title\",\n            \"description\": \"section description\",\n            \"order\": 1,\n            \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"created_at\": \"2024-09-06T10:15:12.814Z\",\n            \"updated_at\": \"2024-09-06T10:15:12.814Z\"\n        },\n        {\n            \"id\": \"anamnesis_section_01J73CRVA5QTTCTHKC6M3BV2RG\",\n            \"title\": \"updated section title\",\n            \"description\": \"updated section description\",\n            \"order\": 1,\n            \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"created_at\": \"2024-09-06T10:06:11.780Z\",\n            \"updated_at\": \"2024-09-06T10:17:50.385Z\"\n        },\n        {\n            \"id\": \"anamnesis_section_01J73DE7RXG7SVV5CEZRR0899Q\",\n            \"title\": \"section title\",\n            \"description\": \"section description\",\n            \"order\": 1,\n            \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"created_at\": \"2024-09-06T10:17:52.668Z\",\n            \"updated_at\": \"2024-09-06T10:17:52.668Z\"\n        },\n        {\n            \"id\": \"anamnesis_section_01J73DE8YD0TBH8JTTGHDKD0QJ\",\n            \"title\": \"section title\",\n            \"description\": \"section description\",\n            \"order\": 1,\n            \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n            \"created_at\": \"2024-09-06T10:17:53.869Z\",\n            \"updated_at\": \"2024-09-06T10:17:53.869Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create section",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"section title\",\n    \"description\": \"section description\",\n    \"order\": 1,\n    \"form_id\": \"anamnesis_form_01J7GMAM0TV1SDM2HW212507XG\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/sections",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"sections"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q' \\\n--data '{\n    \"title\": \"title 7\",\n    \"description\": \"description 7\"\n}'"
+					},
+					"response": [
+						{
+							"name": "create section",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"section title\",\n    \"description\": \"section description\",\n    \"order\": 1,\n    \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/sections",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"sections"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "281"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"119-Uh8fW6cq3KslvxnqBvdioLZylys\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AY1DVsEr-Wl1DyzwetP2L1lNNfx3fSZza.xVVi5pCekVX%2BrsM%2FxFy2YT9F%2Bir4fjChVteVAp71fQ8; Path=/; Expires=Sat, 07 Sep 2024 01:33:00 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:33:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0\",\n        \"title\": \"section title\",\n        \"description\": \"section description\",\n        \"order\": 1,\n        \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n        \"created_at\": \"2024-09-06T15:33:00.982Z\",\n        \"updated_at\": \"2024-09-06T15:33:00.982Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get section by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/sections/anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"sections",
+								"anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "get section by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/sections/anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"sections",
+										"anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "281"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"119-Uh8fW6cq3KslvxnqBvdioLZylys\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3A5YW5nZZXx8I7NAoEw7AZnNdbZL1NAOMg.D%2FDy2kSFM1WzG%2BAFiA4r%2FVIEGiWi60HuOd8OzylbX%2BM; Path=/; Expires=Sat, 07 Sep 2024 01:33:24 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:33:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0\",\n        \"title\": \"section title\",\n        \"description\": \"section description\",\n        \"order\": 1,\n        \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n        \"created_at\": \"2024-09-06T15:33:00.982Z\",\n        \"updated_at\": \"2024-09-06T15:33:00.982Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update section by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"updated section title\",\n    \"description\": \"updated section description\",\n    \"order\": 1,\n    \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/sections/anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"sections",
+								"anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "update section by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"updated section title\",\n    \"description\": \"updated section description\",\n    \"order\": 1,\n    \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/sections/anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"sections",
+										"anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-cd9g/nyK6P7CNbcr4bRbN2mZY4s\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AQLIrLOQCwYCgI0uEI-Lvg5z2RqIRyVA0.6p1NL6Y5HjVJv1QaIIPV6LDtOEGoq71NIWSYtSWeQ%2Bc; Path=/; Expires=Sat, 07 Sep 2024 02:56:03 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 16:56:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0\",\n        \"created_at\": \"2024-09-06T15:33:00.982Z\",\n        \"updated_at\": \"2024-09-06T16:56:03.029Z\",\n        \"title\": \"updated section title\",\n        \"description\": \"updated section description\",\n        \"order\": 1,\n        \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\"\n    }\n}"
+						},
+						{
+							"name": "update non exist section by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Updated form title\",\n    \"description\": \"Updated form description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/sections/anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0asdf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"sections",
+										"anamnesis_section_01J73ZF8XQ21H50PHVBDY7D0J0asdf"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-35NQg9fDRQX2XJk4j7CvUYw79sQ\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AMsvwASW7fbZ2myx0yIQraKWHBASupGvC.S%2BVgzpYSBDEh6rhJEEucLvjoO5WKJHyUzHsHZvIfUwA; Path=/; Expires=Sat, 07 Sep 2024 01:33:59 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:33:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Error updating anamnesis section\",\n    \"error\": \"Anamnesis section not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete section by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/sections/anamnesis_section_01J73D9BNEZKN6CYEGW2FBG2NX",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"sections",
+								"anamnesis_section_01J73D9BNEZKN6CYEGW2FBG2NX"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "delete section by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/sections/anamnesis_section_01J73D9BNEZKN6CYEGW2FBG2NX",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"sections",
+										"anamnesis_section_01J73D9BNEZKN6CYEGW2FBG2NX"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "229"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e5-fuQVD+KW8BQZFIOqtvL1xi2266E\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3Acd0S-pe7nKwDLJtl0oEUa3rMFkoZbjv4.Z2eGiP8ycPNRLPb9iRsXBan8Y1E0D1%2BoYpeurnYbElg; Path=/; Expires=Sat, 07 Sep 2024 01:34:37 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:34:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"title\": \"section title\",\n        \"description\": \"section description\",\n        \"order\": 1,\n        \"form_id\": \"anamnesis_form_01J733HSZ1C85636315ST0216Z\",\n        \"created_at\": \"2024-09-06T10:15:12.814Z\",\n        \"updated_at\": \"2024-09-06T10:15:12.814Z\"\n    }\n}"
+						},
+						{
+							"name": "delete non exist section by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/sections/anamnesis_section_01J73D9BNEZKN6CYEGW2FBG2NX",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"sections",
+										"anamnesis_section_01J73D9BNEZKN6CYEGW2FBG2NX"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-v5D1Rdnnqvbeu7hbbAHZlDUYoAU\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3ArZGdxgGZfNd3lg9LEOBkesgEqWlPkY-E.f9jcLhpovxUkTJCdXrTh4tCrVVQf3KZ%2FSLRy2PLbJL8; Path=/; Expires=Sat, 07 Sep 2024 01:34:44 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:34:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Error deleting anamnesis section\",\n    \"error\": \"Anamnesis section not found\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "admin - questions",
+			"item": [
+				{
+					"name": "get list of questions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"questions"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors'"
+					},
+					"response": [
+						{
+							"name": "get list of questions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/questions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"questions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "359"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"167-4B/H0yIpQTg8oZ9ksmanC27+QyQ\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3ArlcSnynzvR7QzQ-8rSp0y4YsJUgBUmyK.HXvtlsWJDYkFhTTGMtT%2BP16u%2FuD7MKALPVFy9su7UM8; Path=/; Expires=Sat, 07 Sep 2024 01:38:05 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:38:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\",\n            \"section_id\": \"anamnesis_section_01J73CRVA5QTTCTHKC6M3BV2RG\",\n            \"question_text\": \"updated question text\",\n            \"question_type\": \"select\",\n            \"options\": [\n                {\n                    \"others\": {},\n                    \"options\": [\n                        \"A.\",\n                        \"B.\",\n                        \"C.\"\n                    ],\n                    \"option_name\": \"asdf\"\n                }\n            ],\n            \"created_at\": \"2024-09-06T11:40:49.397Z\",\n            \"updated_at\": \"2024-09-06T11:41:59.101Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create question",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"question_text\": \"question text\",\n    \"question_type\": \"select\",\n    \"options\": [\n        {\n            \"option_name\": \"asdf\",\n            \"options\": [\"A.\", \"B.\", \"C.\"],\n            \"others\": {}\n        }\n    ],\n    \"section_id\": \"anamnesis_section_01J7GMBJYJBHYDJMXV0284ZWZV\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"questions"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q' \\\n--data '{\n    \"title\": \"title 7\",\n    \"description\": \"description 7\"\n}'"
+					},
+					"response": [
+						{
+							"name": "create question",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"question_text\": \"question text\",\n    \"question_type\": \"select\",\n    \"options\": [\n        {\n            \"option_name\": \"asdf\",\n            \"options\": [\"A.\", \"B.\", \"C.\"],\n            \"others\": {}\n        }\n    ],\n    \"section_id\": \"anamnesis_section_01J73DE8YD0TBH8JTTGHDKD0QJ\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/questions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"questions"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "349"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15d-2/Uf9831/jpiZVKx2r6oCk0oBf0\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3Aw4Qzhj6HLtDGZDK8MVTCF5BlhDX5ET81.bDPKfAf767DgMwOPyBLsfBIPnyMvEdXJi2gnWOvY7AU; Path=/; Expires=Sat, 07 Sep 2024 01:38:26 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:38:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n        \"section_id\": \"anamnesis_section_01J73DE8YD0TBH8JTTGHDKD0QJ\",\n        \"question_text\": \"question text\",\n        \"question_type\": \"select\",\n        \"options\": [\n            {\n                \"option_name\": \"asdf\",\n                \"options\": [\n                    \"A.\",\n                    \"B.\",\n                    \"C.\"\n                ],\n                \"others\": {}\n            }\n        ],\n        \"created_at\": \"2024-09-06T15:38:26.893Z\",\n        \"updated_at\": \"2024-09-06T15:38:26.893Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get question by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/questions/anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"questions",
+								"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "get question by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/questions/anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"questions",
+										"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "357"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"165-/x+ySznIDMYR4b5cY6wImyIi7Es\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3ATt4ryvvjT-hzNaq-_2MkkcjvVwCwZy4X.CjhIBIfHcfXl3Z55%2Bw6yZQNgy%2Fc5hDB10FiG%2FBXYOx0; Path=/; Expires=Sat, 07 Sep 2024 01:38:48 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:38:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\",\n        \"section_id\": \"anamnesis_section_01J73CRVA5QTTCTHKC6M3BV2RG\",\n        \"question_text\": \"updated question text\",\n        \"question_type\": \"select\",\n        \"options\": [\n            {\n                \"others\": {},\n                \"options\": [\n                    \"A.\",\n                    \"B.\",\n                    \"C.\"\n                ],\n                \"option_name\": \"asdf\"\n            }\n        ],\n        \"created_at\": \"2024-09-06T11:40:49.397Z\",\n        \"updated_at\": \"2024-09-06T11:41:59.101Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update question by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"question_text\": \"updated question text\",\n    \"question_type\": \"select\",\n    \"options\": [\n        {\n            \"option_name\": \"asdf\",\n            \"options\": [\"A.\", \"B.\", \"C.\"],\n            \"others\": {}\n        }\n    ],\n    \"section_id\": \"anamnesis_section_01J73DE8YD0TBH8JTTGHDKD0QJ\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/questions/anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"questions",
+								"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "update question by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"question_text\": \"updated question text\",\n    \"question_type\": \"select\",\n    \"options\": [\n        {\n            \"option_name\": \"asdf\",\n            \"options\": [\"A.\", \"B.\", \"C.\"],\n            \"others\": {}\n        }\n    ],\n    \"section_id\": \"anamnesis_section_01J73DE8YD0TBH8JTTGHDKD0QJ\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/questions/anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"questions",
+										"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "357"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"165-Cup9QSBd9qF9/Ws8bSTdilYOxMU\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3A3-t7DEdffoeUcGafjk20jGrI9WETEaLp.L24Ux4ioiVqArRFuD7b3kmUOFj7aPBVtUJJ0NfmkRXY; Path=/; Expires=Sat, 07 Sep 2024 01:39:09 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:39:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\",\n        \"section_id\": \"anamnesis_section_01J73DE8YD0TBH8JTTGHDKD0QJ\",\n        \"question_text\": \"updated question text\",\n        \"question_type\": \"select\",\n        \"options\": [\n            {\n                \"option_name\": \"asdf\",\n                \"options\": [\n                    \"A.\",\n                    \"B.\",\n                    \"C.\"\n                ],\n                \"others\": {}\n            }\n        ],\n        \"created_at\": \"2024-09-06T11:40:49.397Z\",\n        \"updated_at\": \"2024-09-06T15:39:09.923Z\"\n    }\n}"
+						},
+						{
+							"name": "update non exist question by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"question_text\": \"updated question text\",\n    \"question_type\": \"select\",\n    \"options\": [\n        {\n            \"option_name\": \"asdf\",\n            \"options\": [\"A.\", \"B.\", \"C.\"],\n            \"others\": {}\n        }\n    ],\n    \"section_id\": \"anamnesis_section_01J73DE8YD0TBH8JTTGHDKD0QJ\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/questions/anamnesis_question_01J73J63VPN69GVXDGKRW1H4VX",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"questions",
+										"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VX"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-nskRPmpbIwvcDpaI1bRnudWdp3g\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3Amf2vIFEPRu50KSPjvaOS_muNmVcDrNnv.%2BY%2Fk3AHpDfMASLx9P2VVXWYbvhqrwgQe0vsysyTUZE8; Path=/; Expires=Sat, 07 Sep 2024 01:39:18 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:39:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Error updating anamnesis question\",\n    \"error\": \"Anamnesis question not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete question by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/questions/anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"questions",
+								"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "delete question by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/questions/anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"questions",
+										"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "304"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"130-LtrLMZ+ltbMgCUBswEJkglaCQtk\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3Ayp80C8ObDyBnNjhHyBILh-JIr-5_ystD.daieCjb%2Fek28oktdHzKuNywY6PO2FWo3j7BMK%2FvCj30; Path=/; Expires=Sat, 07 Sep 2024 01:39:39 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:39:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"section_id\": \"anamnesis_section_01J73DE8YD0TBH8JTTGHDKD0QJ\",\n        \"question_text\": \"updated question text\",\n        \"question_type\": \"select\",\n        \"options\": [\n            {\n                \"others\": {},\n                \"options\": [\n                    \"A.\",\n                    \"B.\",\n                    \"C.\"\n                ],\n                \"option_name\": \"asdf\"\n            }\n        ],\n        \"created_at\": \"2024-09-06T11:40:49.397Z\",\n        \"updated_at\": \"2024-09-06T15:39:09.923Z\"\n    }\n}"
+						},
+						{
+							"name": "delete non exist question by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/questions/anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"questions",
+										"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-Kt9k6izsNYf0cSYZ22E9/9cteLI\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3A_JJcSRA6jddXX-9ZA6Hzkkmq44bNxziv.FrNsCPRCF%2F5B2Cj%2Fc%2BVrW%2BiMrFWXqgkuXvznENqgh88; Path=/; Expires=Sat, 07 Sep 2024 01:39:46 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:39:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Error deleting anamnesis question\",\n    \"error\": \"Anamnesis question not found\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "admin - translation",
+			"item": [
+				{
+					"name": "get list of translations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/translations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"translations"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors'"
+					},
+					"response": [
+						{
+							"name": "get list of translations",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/translations",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"translations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "550"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"226-WwDQOTb/W1ntwV1bpPpFWx/f9Io\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AiEj2Tx7_1moYn3GKtDHs66XGdG4yX0C6.0SB6OwSPpvNJJqIcO8ufHmvtArpl2LUltamnIKSENSg; Path=/; Expires=Sat, 07 Sep 2024 01:53:19 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:53:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"translation_01J740FJX7E7CWS5KTFC8KTHTN\",\n            \"entity_type\": \"question\",\n            \"entity_id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n            \"language_code\": \"id\",\n            \"translated_text\": \"pertanyaan\",\n            \"created_at\": \"2024-09-06T15:50:39.780Z\",\n            \"updated_at\": \"2024-09-06T15:50:39.780Z\"\n        },\n        {\n            \"id\": \"translation_01J740M17B48KW61C7YCNFSCYG\",\n            \"entity_type\": \"question\",\n            \"entity_id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n            \"language_code\": \"de\",\n            \"translated_text\": \"frage\",\n            \"created_at\": \"2024-09-06T15:53:05.514Z\",\n            \"updated_at\": \"2024-09-06T15:53:05.514Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create translation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"entity_type\": \"question\",\n    \"entity_id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n    \"language_code\": \"id\",\n    \"translated_text\": \"pertanyaan\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/translations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"translations"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q' \\\n--data '{\n    \"title\": \"title 7\",\n    \"description\": \"description 7\"\n}'"
+					},
+					"response": [
+						{
+							"name": "create translation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"entity_type\": \"question\",\n    \"entity_id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n\t\t\"language_code\": \"id\",\n\t\t\"translated_text\": \"pertanyaan\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/translations",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"translations"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "288"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"120-wPz84d1jIMFjSBwX/Ulsga8W9lQ\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AB9fILKaeeAGtshH258vhzWHNMoLQSO3N.eMEy3CO47Lh649kDt0sMsWkmx8KNxwC6Y4n2e5lr7ro; Path=/; Expires=Sat, 07 Sep 2024 01:50:39 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:50:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"translation_01J740FJX7E7CWS5KTFC8KTHTN\",\n        \"entity_type\": \"question\",\n        \"entity_id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n        \"language_code\": \"id\",\n        \"translated_text\": \"pertanyaan\",\n        \"created_at\": \"2024-09-06T15:50:39.780Z\",\n        \"updated_at\": \"2024-09-06T15:50:39.780Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get translation by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/translations/translation_01J740FJX7E7CWS5KTFC8KTHTN",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"translations",
+								"translation_01J740FJX7E7CWS5KTFC8KTHTN"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "get translation by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/translations/translation_01J740FJX7E7CWS5KTFC8KTHTN",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"translations",
+										"translation_01J740FJX7E7CWS5KTFC8KTHTN"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "288"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"120-wPz84d1jIMFjSBwX/Ulsga8W9lQ\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AhKRRhFCVYHEqdrRVLjdr1Ce2oGNKbAod.5tQMYjXLWSgMnxD9AzASHJF%2BniOkjnwcXZ8NZy%2FWGgw; Path=/; Expires=Sat, 07 Sep 2024 01:52:06 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:52:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"translation_01J740FJX7E7CWS5KTFC8KTHTN\",\n        \"entity_type\": \"question\",\n        \"entity_id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n        \"language_code\": \"id\",\n        \"translated_text\": \"pertanyaan\",\n        \"created_at\": \"2024-09-06T15:50:39.780Z\",\n        \"updated_at\": \"2024-09-06T15:50:39.780Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update translation by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"entity_type\": \"question\",\n    \"entity_id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n    \"language_code\": \"id\",\n    \"translated_text\": \"Pertanyaan\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/translations/translation_01J740MN8A3PC754ZDR4CEPNXK",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"translations",
+								"translation_01J740MN8A3PC754ZDR4CEPNXK"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "update translation by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"entity_type\": \"question\",\n    \"entity_id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n    \"language_code\": \"id\",\n    \"translated_text\": \"Pertanyaan\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/translations/translation_01J740MN8A3PC754ZDR4CEPNXK",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"translations",
+										"translation_01J740MN8A3PC754ZDR4CEPNXK"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "288"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"120-IcboCLOR3rduK524DJy3AfU62DI\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AujOIbkgRmIOFhg1-dmRtUpTgpZnLfp8R.uWhHpE7EO06xL%2BLj7hpHVhr25XPBllUcKZGRum1outs; Path=/; Expires=Sat, 07 Sep 2024 01:54:35 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:54:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"translation_01J740MN8A3PC754ZDR4CEPNXK\",\n        \"entity_type\": \"question\",\n        \"entity_id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n        \"language_code\": \"id\",\n        \"translated_text\": \"Pertanyaan\",\n        \"created_at\": \"2024-09-06T15:53:26.025Z\",\n        \"updated_at\": \"2024-09-06T15:54:35.335Z\"\n    }\n}"
+						},
+						{
+							"name": "update non exist translation by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"entity_type\": \"question\",\n    \"entity_id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n    \"language_code\": \"id\",\n    \"translated_text\": \"Pertanyaan\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/translations/translation_01J740MN8A3PC754ZDR4CEPNXK",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"translations",
+										"translation_01J740MN8A3PC754ZDR4CEPNXK"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-1u9hPyI4WBh7VlkPT/WsIkCjjA4\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AyieB6D3XsWGlRYZ5sgMuhuJn2QfBEHpd.WjGDbdbVnsYwgMMuarJ9J6MrzmTiL390SdpxH0p%2FIU4; Path=/; Expires=Sat, 07 Sep 2024 01:55:04 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:55:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Error updating translation\",\n    \"error\": \"Translation not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete translation by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/translations/translation_01J740MN8A3PC754ZDR4CEPNXK",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"translations",
+								"translation_01J740MN8A3PC754ZDR4CEPNXK"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "delete translation by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/translations/translation_01J740MN8A3PC754ZDR4CEPNXK",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"translations",
+										"translation_01J740MN8A3PC754ZDR4CEPNXK"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "242"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f2-z0GlGiC8WNmuN8+m3mvDwYBybTY\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3Aozp9qX70QQSU26_TjP-foqvt5WckEYv0.3YLCbvUR%2Bxm3NdCGuVI1oy2BaL1wJJit6INPoIz4uMU; Path=/; Expires=Sat, 07 Sep 2024 01:54:49 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:54:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"entity_type\": \"question\",\n        \"entity_id\": \"anamnesis_question_01J73ZS76E7DGS1RD5MPYTPJ7Z\",\n        \"language_code\": \"id\",\n        \"translated_text\": \"Pertanyaan\",\n        \"created_at\": \"2024-09-06T15:53:26.025Z\",\n        \"updated_at\": \"2024-09-06T15:54:35.335Z\"\n    }\n}"
+						},
+						{
+							"name": "delete non exist translation by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/translations/translation_01J740MN8A3PC754ZDR4CEPNXK",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"translations",
+										"translation_01J740MN8A3PC754ZDR4CEPNXK"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-CqwH/PaskvvHgGH/jU2Vx26OcX0\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3A4QiKGmDKtxTWsLkXcPBuRfr8K0c-CpDJ.Vk5M780MtgXp6uabACvIvcZTLHfrCz1AzOKQG7FkZgo; Path=/; Expires=Sat, 07 Sep 2024 01:54:56 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:54:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Error deleting translation\",\n    \"error\": \"Translation not found\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "store - responses",
+			"item": [
+				{
+					"name": "get list of responses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/store/custom/responses/anamnesis_response_01J7GNEGR6KSGDFPA359RFB25Z",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"store",
+								"custom",
+								"responses",
+								"anamnesis_response_01J7GNEGR6KSGDFPA359RFB25Z"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors'"
+					},
+					"response": [
+						{
+							"name": "get list of responses",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/store/custom/responses",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"store",
+										"custom",
+										"responses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1215"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4bf-JRc7DmmehWMzgPJH3OqOSDBvEEA\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3ACCf-3T9O5n6J6OpcVi842PRr48fiODZN.8dwDcbr8%2BlOYQjXuFmPLJhN8ETiXkYpAg%2BQoB%2F1eHX4; Path=/; Expires=Sat, 07 Sep 2024 01:46:51 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:46:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS\",\n            \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n            \"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n            \"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n            \"responses\": [\n                {\n                    \"answer\": \"This is an updated answer\",\n                    \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\"\n                }\n            ],\n            \"created_at\": \"2024-09-06T15:44:34.729Z\",\n            \"updated_at\": \"2024-09-06T15:46:01.504Z\"\n        },\n        {\n            \"id\": \"anamnesis_response_01J7408D2X4QNMHK195S666ZCV\",\n            \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n            \"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n            \"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n            \"responses\": [\n                {\n                    \"answer\": \"This is an answer\",\n                    \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\"\n                }\n            ],\n            \"created_at\": \"2024-09-06T15:46:44.443Z\",\n            \"updated_at\": \"2024-09-06T15:46:44.443Z\"\n        },\n        {\n            \"id\": \"anamnesis_response_01J7408DPBACH2R7ZHD04RWP9J\",\n            \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n            \"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n            \"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n            \"responses\": [\n                {\n                    \"answer\": \"This is an answer\",\n                    \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\"\n                }\n            ],\n            \"created_at\": \"2024-09-06T15:46:45.067Z\",\n            \"updated_at\": \"2024-09-06T15:46:45.067Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create response",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n\t\t\"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n\t\t\"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n\t\t\"responses\": [\n        {\n            \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\",\n            \"answer\": \"This is an answer\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/store/custom/responses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"store",
+								"custom",
+								"responses"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q' \\\n--data '{\n    \"title\": \"title 7\",\n    \"description\": \"description 7\"\n}'"
+					},
+					"response": [
+						{
+							"name": "create response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AV6RShzWSwL3T-SaU_4WNaMYiHshRWyf7.FxoDtFSc2zXHjrCNcldLKy%2BrDoC1w%2BMI%2Fon%2FIMOtj9Q"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n\t\t\"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n\t\t\"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n\t\t\"responses\": [\n        {\n            \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\",\n            \"answer\": \"This is an answer\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/store/custom/responses",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"store",
+										"custom",
+										"responses"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "417"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a1-shweFfv8dlG5cV/V5xx8BFBe3ik\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3Agu5bVzurheC2TrjNdc-J2dlcZZW2EImR.irCDQKvwq3HwjQZYIKLr1yYSp80B9VfVBBpG0gOQbyc; Path=/; Expires=Sat, 07 Sep 2024 01:44:34 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:44:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS\",\n        \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n        \"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n        \"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n        \"responses\": [\n            {\n                \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\",\n                \"answer\": \"This is an answer\"\n            }\n        ],\n        \"created_at\": \"2024-09-06T15:44:34.729Z\",\n        \"updated_at\": \"2024-09-06T15:44:34.729Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get response by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/store/custom/responses/anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"store",
+								"custom",
+								"responses",
+								"anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "get response by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/store/custom/responses/anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"store",
+										"custom",
+										"responses",
+										"anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "417"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a1-gOkR9enj5gbObNNY/L1iBkN1his\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AJO00bgjJLXx0oJirReVHE8TSxiFqp7NM.tCXpPOtG0te42yVo9G2nq5GPgA2scr9l7isXEA70UPY; Path=/; Expires=Sat, 07 Sep 2024 01:45:16 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:45:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS\",\n        \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n        \"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n        \"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n        \"responses\": [\n            {\n                \"answer\": \"This is an answer\",\n                \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\"\n            }\n        ],\n        \"created_at\": \"2024-09-06T15:44:34.729Z\",\n        \"updated_at\": \"2024-09-06T15:44:34.729Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update response by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n\t\t\"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n\t\t\"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n\t\t\"responses\": [\n        {\n            \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\",\n            \"answer\": \"This is an updated answer\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/store/custom/responses/anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"store",
+								"custom",
+								"responses",
+								"anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "update response by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n\t\t\"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n\t\t\"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n\t\t\"responses\": [\n        {\n            \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\",\n            \"answer\": \"This is an updated answer\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/store/custom/responses/anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"store",
+										"custom",
+										"responses",
+										"anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "425"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a9-a1M0iMX1wtjYyOjaUYRvPmrtJAk\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AfBLadcWfEohwHmXgsKrBp7g6WT3J2jE8.l8ybKFL7yUIhm9wuT3SLg%2FlyQ11pbA54tH%2FG0PxuKkw; Path=/; Expires=Sat, 07 Sep 2024 01:46:01 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:46:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCS\",\n        \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n        \"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n        \"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n        \"responses\": [\n            {\n                \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\",\n                \"answer\": \"This is an updated answer\"\n            }\n        ],\n        \"created_at\": \"2024-09-06T15:44:34.729Z\",\n        \"updated_at\": \"2024-09-06T15:46:01.504Z\"\n    }\n}"
+						},
+						{
+							"name": "update non exist response by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n\t\t\"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n\t\t\"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n\t\t\"responses\": [\n        {\n            \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\",\n            \"answer\": \"This is an updated answer\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/store/custom/responses/anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCX",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"store",
+										"custom",
+										"responses",
+										"anamnesis_response_01J7404EDBCEA3VE9WGWHR0CCX"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-DLXwnsKHbWoYumT2XSZaUoz2iIM\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3ADJRPM9LiYcmHoEOLUSO5oUI_skVhWC5M.XTtrFlzOBa%2BCSIG9IizY7Iql8WkSXjGo6FpZGo7NWWk; Path=/; Expires=Sat, 07 Sep 2024 01:46:11 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:46:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Error updating anamnesis response\",\n    \"error\": \"Anamnesis response not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete response by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/store/custom/responses/anamnesis_response_01J7408DPBACH2R7ZHD04RWP9J",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"store",
+								"custom",
+								"responses",
+								"anamnesis_response_01J7408DPBACH2R7ZHD04RWP9J"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:9000/admin/custom/forms/anamnesis_form_01J73478K1SPK0BB5QNN0T8XGQ' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI' \\\n--data '{\n    \"title\": \"2nd Updated title 5\",\n    \"description\": \"2nd Updated description 5\"\n}'"
+					},
+					"response": [
+						{
+							"name": "delete response by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/store/custom/responses/anamnesis_response_01J7408DPBACH2R7ZHD04RWP9J",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"store",
+										"custom",
+										"responses",
+										"anamnesis_response_01J7408DPBACH2R7ZHD04RWP9J"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "364"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"16c-vTg9Cz41FY8u+LY7ffBAPj70QrY\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AqnZaCGIaViK6rVE38F6m-SUuTkdlxYY3.zPGJ6cNdDNLtUNH7jXFYzr8Yw%2FQM3mbI%2FG0Abxbtp7E; Path=/; Expires=Sat, 07 Sep 2024 01:47:09 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:47:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n        \"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n        \"form_id\": \"anamnesis_form_01J733KH5MP80CSA3DY6NEJEFT\",\n        \"responses\": [\n            {\n                \"answer\": \"This is an answer\",\n                \"question_id\": \"anamnesis_question_01J73J63VPN69GVXDGKRW1H4VJ\"\n            }\n        ],\n        \"created_at\": \"2024-09-06T15:46:45.067Z\",\n        \"updated_at\": \"2024-09-06T15:46:45.067Z\"\n    }\n}"
+						},
+						{
+							"name": "delete non exist response by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AfQdCgSt60GjgfSn2uR22vG22aRA2ICoB.lb3QGtNvdN988SxtRG59mJbSG5m1Q%2BYzmC%2B2QNQcZdI"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/store/custom/responses/anamnesis_response_01J7408DPBACH2R7ZHD04RWP9J",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"store",
+										"custom",
+										"responses",
+										"anamnesis_response_01J7408DPBACH2R7ZHD04RWP9J"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-SsnADgDLnWRHWLIH26pIKC+FYMk\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AwM57HaFpih--Mnh8jJS-Z9GWx4QXE6D5.SILwAdbD90cQHDdM5T439%2BCvghU6MX7EdfuUZuwAlZY; Path=/; Expires=Sat, 07 Sep 2024 01:47:15 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Sep 2024 15:47:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Error deleting anamnesis response\",\n    \"error\": \"Anamnesis response not found\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "template",
+			"item": [
+				{
+					"name": "retrieve admin form template",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/admin/custom/forms/anamnesis_form_01J7GMAM0TV1SDM2HW212507XG/template",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"custom",
+								"forms",
+								"anamnesis_form_01J7GMAM0TV1SDM2HW212507XG",
+								"template"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors'"
+					},
+					"response": [
+						{
+							"name": "retrieve admin template",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/admin/custom/forms/template",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"admin",
+										"custom",
+										"forms",
+										"template"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "821"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"335-2l3lFtoekG0ZIO2/gtAgQXJvDno\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AIbFpmapZaaCDwVycdUorVX05rvOHEvnV.OGtOf66KgC98uk88y45sFa4fBe7LbWs8SDEOMZylJw8; Path=/; Expires=Wed, 11 Sep 2024 23:32:40 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 11 Sep 2024 13:32:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"anamnesis_form_01J7GMAM0TV1SDM2HW212507XG\",\n            \"title\": \"Form title\",\n            \"description\": \"Form description\",\n            \"created_at\": \"2024-09-11T13:28:21.785Z\",\n            \"updated_at\": \"2024-09-11T13:28:21.785Z\",\n            \"sections\": [\n                {\n                    \"id\": \"anamnesis_section_01J7GMBJYJBHYDJMXV0284ZWZV\",\n                    \"title\": \"section title\",\n                    \"description\": \"section description\",\n                    \"order\": 1,\n                    \"form_id\": \"anamnesis_form_01J7GMAM0TV1SDM2HW212507XG\",\n                    \"created_at\": \"2024-09-11T13:28:53.456Z\",\n                    \"updated_at\": \"2024-09-11T13:28:53.456Z\",\n                    \"questions\": [\n                        {\n                            \"id\": \"anamnesis_question_01J7GMC4KNZWPZZFCC47HA8ZHZ\",\n                            \"section_id\": \"anamnesis_section_01J7GMBJYJBHYDJMXV0284ZWZV\",\n                            \"question_text\": \"question text\",\n                            \"question_type\": \"select\",\n                            \"options\": [\n                                {\n                                    \"others\": {},\n                                    \"options\": [\n                                        \"A.\",\n                                        \"B.\",\n                                        \"C.\"\n                                    ],\n                                    \"option_name\": \"asdf\"\n                                }\n                            ],\n                            \"created_at\": \"2024-09-11T13:29:11.542Z\",\n                            \"updated_at\": \"2024-09-11T13:29:11.542Z\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "retrieve store response template",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+							},
+							{
+								"key": "Cookie",
+								"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/store/custom/responses/anamnesis_response_01J7GNEGR6KSGDFPA359RFB25Z/template",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"store",
+								"custom",
+								"responses",
+								"anamnesis_response_01J7GNEGR6KSGDFPA359RFB25Z",
+								"template"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:9000/admin/custom/forms' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY' \\\n--header 'Cookie: connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors'"
+					},
+					"response": [
+						{
+							"name": "retrieve store response template",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNyXzAxSjcyUU5DRFpCQTBLRDdTS0hIV1FYNDQ0IiwiZG9tYWluIjoiYWRtaW4iLCJpYXQiOjE3MjU2MDAwMjEsImV4cCI6MTcyNTY4NjQyMX0.YaKUCOQ5DsWCXIjjC-MwuFWvQvPzfY8VvYV7IcwVSdY"
+									},
+									{
+										"key": "Cookie",
+										"value": "connect.sid=s%3AQES9CWBFaFB5sTk3GurExQ1z-z5YRcr5.GsQtaU8kl7y1QiaHfTii0imyBPoncSYoKZLoAziZors"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/store/custom/responses/anamnesis_response_01J7GNEGR6KSGDFPA359RFB25Z/template",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"store",
+										"custom",
+										"responses",
+										"anamnesis_response_01J7GNEGR6KSGDFPA359RFB25Z",
+										"template"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1228"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4cc-3BjakZt2jY34EguDKvcQL074d98\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3A5GXul7Aw9JDKFh09jKWRD2090jHHKpCE.48CEY0QeidTX5%2BtQ18ag2ZT%2BVBcJTjDVP96gFbhaD%2Bk; Path=/; Expires=Thu, 12 Sep 2024 01:08:07 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 11 Sep 2024 15:08:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"anamnesis_response_01J7GNEGR6KSGDFPA359RFB25Z\",\n        \"customer_id\": \"customer_01J733HSZ1C85636315ST0216Z\",\n        \"order_id\": \"order_01J733J016WVPBBFPEE2HJMRYX\",\n        \"form_id\": \"anamnesis_form_01J7GNEGNSDGWD7BS1A6YP06J2\",\n        \"form\": {\n            \"id\": \"anamnesis_form_01J7GNEGNSDGWD7BS1A6YP06J2\",\n            \"title\": \"Form title\",\n            \"description\": \"Form description\",\n            \"created_at\": \"2024-09-11T13:47:58.010Z\",\n            \"updated_at\": \"2024-09-11T13:47:58.010Z\",\n            \"sections\": [\n                {\n                    \"id\": \"anamnesis_section_01J7GNEGP7W70CBKM1C8P3K59G\",\n                    \"title\": \"section title\",\n                    \"description\": \"section description\",\n                    \"order\": 1,\n                    \"form_id\": \"anamnesis_form_01J7GNEGNSDGWD7BS1A6YP06J2\",\n                    \"created_at\": \"2024-09-11T13:47:58.023Z\",\n                    \"updated_at\": \"2024-09-11T13:47:58.023Z\",\n                    \"questions\": [\n                        {\n                            \"id\": \"anamnesis_question_01J7GNEGPJB5BEN536DG46WHAQ\",\n                            \"section_id\": \"anamnesis_section_01J7GNEGP7W70CBKM1C8P3K59G\",\n                            \"question_text\": \"question text\",\n                            \"question_type\": \"select\",\n                            \"options\": [\n                                {\n                                    \"others\": {},\n                                    \"options\": [\n                                        \"A.\",\n                                        \"B.\",\n                                        \"C.\"\n                                    ],\n                                    \"option_name\": \"asdf\"\n                                }\n                            ],\n                            \"created_at\": \"2024-09-11T13:47:58.033Z\",\n                            \"updated_at\": \"2024-09-11T13:47:58.033Z\"\n                        }\n                    ]\n                }\n            ]\n        },\n        \"responses\": [\n            {\n                \"answer\": \"This is an updated answer\",\n                \"question_id\": \"anamnesis_question_01J7GNEGPJB5BEN536DG46WHAQ\"\n            }\n        ],\n        \"created_at\": \"2024-09-11T13:47:58.087Z\",\n        \"updated_at\": \"2024-09-11T13:47:58.109Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
