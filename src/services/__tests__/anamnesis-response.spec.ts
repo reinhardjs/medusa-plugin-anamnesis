@@ -15,6 +15,7 @@ describe('AnamnesisResponseService', () => {
                 find: jest.fn(),
                 findOne: jest.fn(),
                 remove: jest.fn(),
+                getStoreResponseTemplateById: jest.fn(),
             },
         };
         service = new AnamnesisResponseService(mockContainer);
@@ -80,6 +81,90 @@ describe('AnamnesisResponseService', () => {
 
             expect(mockContainer.anamnesisResponseRepository.findOne).toHaveBeenCalledWith({ where: { id: 'nonexistent' } });
             expect(result).toBeNull();
+        });
+    });
+
+    describe('getStoreResponseTemplateById', () => {
+        const formId = "anamnesis_form_01J7GMAM0TV1SDM2HW212507XG";
+        const responseId = "anamnesis_response_01J7GNEGR6KSGDFPA359RFB25Z";
+
+        it('should return response form templates', async () => {
+            const mockStoreTemplates = {
+                id: responseId,
+                customer_id: "customer_01J733HSZ1C85636315ST0216Z",
+                order_id: "order_01J733J016WVPBBFPEE2HJMRYX",
+                form_id: formId,
+                form: {
+                    id: formId,
+                    title: "Form title",
+                    description: "Form description",
+                    created_at: "2024-09-11T13:47:58.010Z",
+                    updated_at: "2024-09-11T13:47:58.010Z",
+                    sections: [
+                        {
+                            id: "anamnesis_section_01J7GNEGP7W70CBKM1C8P3K59G",
+                            title: "section title",
+                            description: "section description",
+                            order: 1,
+                            form_id: formId,
+                            created_at: "2024-09-11T13:47:58.023Z",
+                            updated_at: "2024-09-11T13:47:58.023Z",
+                            questions: [
+                                {
+                                    id: "anamnesis_question_01J7GNEGPJB5BEN536DG46WHAQ",
+                                    section_id: "anamnesis_section_01J7GNEGP7W70CBKM1C8P3K59G",
+                                    question_text: "question text",
+                                    question_type: "select",
+                                    options: [
+                                        {
+                                            others: {},
+                                            options: [
+                                                "A.",
+                                                "B.",
+                                                "C."
+                                            ],
+                                            option_name: "asdf"
+                                        }
+                                    ],
+                                    created_at: "2024-09-11T13:47:58.033Z",
+                                    updated_at: "2024-09-11T13:47:58.033Z"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                responses: [
+                    {
+                        answer: "This is an updated answer",
+                        question_id: "anamnesis_question_01J7GNEGPJB5BEN536DG46WHAQ"
+                    }
+                ],
+                created_at: "2024-09-11T13:47:58.087Z",
+                updated_at: "2024-09-11T13:47:58.109Z"
+            };
+
+            mockContainer.anamnesisResponseRepository.getStoreResponseTemplateById.mockResolvedValue(mockStoreTemplates);
+
+            const result = await service.getStoreResponseTemplateById(responseId);
+
+            expect(mockContainer.anamnesisResponseRepository.getStoreResponseTemplateById).toHaveBeenCalledWith(responseId);
+            expect(result).toEqual(mockStoreTemplates);
+        });
+
+        it('should return a null if response template is not found', async () => {
+            mockContainer.anamnesisResponseRepository.getStoreResponseTemplateById.mockResolvedValue(null);
+
+            const result = await service.getStoreResponseTemplateById(responseId);
+
+            expect(mockContainer.anamnesisResponseRepository.getStoreResponseTemplateById).toHaveBeenCalledWith(responseId);
+            expect(result).toEqual(null);
+        });
+
+        it('should throw an error if the repository method fails', async () => {
+            const errorMessage = 'Database error';
+            mockContainer.anamnesisResponseRepository.getStoreResponseTemplateById.mockRejectedValue(new Error(errorMessage));
+
+            await expect(service.getStoreResponseTemplateById(responseId)).rejects.toThrow(errorMessage);
         });
     });
 
