@@ -6,11 +6,13 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     ManyToOne,
-    JoinColumn
+    JoinColumn,
+    OneToMany
 } from "typeorm"
 import { BaseEntity } from "@medusajs/medusa"
 import { generateEntityId } from "@medusajs/medusa/dist/utils"
 import { AnamnesisForm } from "./anamnesis-form"
+import { AnamnesisQuestion } from "./anamnesis-question"
 
 @Entity()
 export class AnamnesisSection extends BaseEntity {
@@ -38,6 +40,10 @@ export class AnamnesisSection extends BaseEntity {
 
     @UpdateDateColumn()
     updated_at: Date
+
+    @OneToMany(() => AnamnesisQuestion, (question) => question.section)
+    @JoinColumn({ name: "section_id" })
+    questions: AnamnesisQuestion[]
 
     @BeforeInsert()
     private beforeInsert(): void {

@@ -4,10 +4,13 @@ import {
     Entity,
     PrimaryColumn,
     CreateDateColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    OneToMany,
+    JoinColumn
 } from "typeorm"
 import { BaseEntity } from "@medusajs/medusa"
 import { generateEntityId } from "@medusajs/medusa/dist/utils"
+import { AnamnesisSection } from "./anamnesis-section"
 
 @Entity()
 export class AnamnesisForm extends BaseEntity {
@@ -25,6 +28,10 @@ export class AnamnesisForm extends BaseEntity {
 
     @UpdateDateColumn()
     updated_at: Date
+
+    @OneToMany(() => AnamnesisSection, (section) => section.form)
+    @JoinColumn({ name: "form_id" })
+    sections: AnamnesisSection[]
 
     @BeforeInsert()
     private beforeInsert(): void {
