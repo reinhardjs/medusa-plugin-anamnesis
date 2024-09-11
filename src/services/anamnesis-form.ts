@@ -42,6 +42,10 @@ class AnamnesisFormService extends TransactionBaseService {
         return await this.anamnesisFormRepository_.findOne({ where: { id } })
     }
 
+    async getAdminFormTemplateById(formId: string): Promise<AnamnesisForm> {
+        return await this.anamnesisFormRepository_.getAdminFormTemplateById(formId)
+    }
+
     /**
      * Updates an existing anamnesis form with the provided data.
      *
