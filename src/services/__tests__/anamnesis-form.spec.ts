@@ -16,6 +16,7 @@ describe('AnamnesisFormService', () => {
                 find: jest.fn(),
                 findOne: jest.fn(),
                 remove: jest.fn(),
+                getAdminFormTemplateById: jest.fn(),
             },
         };
         service = new AnamnesisFormService(mockContainer);
@@ -77,6 +78,75 @@ describe('AnamnesisFormService', () => {
 
             expect(mockContainer.anamnesisFormRepository.findOne).toHaveBeenCalledWith({ where: { id: 'nonexistent' } });
             expect(result).toBeNull();
+        });
+    });
+
+    describe('getAdminFormTemplateById', () => {
+        const formId = "anamnesis_form_01J7GMAM0TV1SDM2HW212507XG";
+        
+        it('should return admin form templates', async () => {
+            const mockAdminTemplates = {
+                id: formId,
+                title: "Form title",
+                description: "Form description",
+                created_at: "2024-09-11T13:28:21.785Z",
+                updated_at: "2024-09-11T13:28:21.785Z",
+                sections: [
+                    {
+                        id: "anamnesis_section_01J7GMBJYJBHYDJMXV0284ZWZV",
+                        title: "section title",
+                        description: "section description",
+                        order: 1,
+                        form_id: "anamnesis_form_01J7GMAM0TV1SDM2HW212507XG",
+                        created_at: "2024-09-11T13:28:53.456Z",
+                        updated_at: "2024-09-11T13:28:53.456Z",
+                        questions: [
+                            {
+                                id: "anamnesis_question_01J7GMC4KNZWPZZFCC47HA8ZHZ",
+                                section_id: "anamnesis_section_01J7GMBJYJBHYDJMXV0284ZWZV",
+                                question_text: "question text",
+                                question_type: "select",
+                                options: [
+                                    {
+                                        others: {},
+                                        options: [
+                                            "A.",
+                                            "B.",
+                                            "C."
+                                        ],
+                                        option_name: "asdf"
+                                    }
+                                ],
+                                created_at: "2024-09-11T13:29:11.542Z",
+                                updated_at: "2024-09-11T13:29:11.542Z"
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            mockContainer.anamnesisFormRepository.getAdminFormTemplateById.mockResolvedValue(mockAdminTemplates);
+
+            const result = await service.getAdminFormTemplateById(formId);
+
+            expect(mockContainer.anamnesisFormRepository.getAdminFormTemplateById).toHaveBeenCalledWith(formId);
+            expect(result).toEqual(mockAdminTemplates);
+        });
+
+        it('should return a null if admin template is not found', async () => {
+            mockContainer.anamnesisFormRepository.getAdminFormTemplateById.mockResolvedValue(null);
+
+            const result = await service.getAdminFormTemplateById(formId);
+
+            expect(mockContainer.anamnesisFormRepository.getAdminFormTemplateById).toHaveBeenCalledWith(formId);
+            expect(result).toEqual(null);
+        });
+
+        it('should throw an error if the repository method fails', async () => {
+            const errorMessage = 'Database error';
+            mockContainer.anamnesisFormRepository.getAdminFormTemplateById.mockRejectedValue(new Error(errorMessage));
+
+            await expect(service.getAdminFormTemplateById(formId)).rejects.toThrow(errorMessage);
         });
     });
 
